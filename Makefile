@@ -8,7 +8,7 @@ image:
 	docker run -i -t -v $(cwd):/work --privileged -v /dev:/dev --workdir /work stx-installer
 
 build:
-	go build -o installer main.go
+	go build -o stx-installer main.go
 
 clean:
-	rm -f installer
+	rm -f stx-installer

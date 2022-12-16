@@ -1,9 +1,13 @@
 package cmd
 
 import (
+	"fmt"
 	"os"
 
+	"github.com/zulcss/stx-installer/internal"
+
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 
@@ -14,7 +18,11 @@ var rootCmd = &cobra.Command{
 	Short: "StarlingX Instaler",
 	// TODO: write something here
 	Long: "",
-	Run: func(cmd *cobra.Command, args []string) { },
+	Run: func(cmd *cobra.Command, args []string) { 
+		internal.ReadConfig()
+
+		fmt.Printf("%s\n", viper.GetString("image.url"))
+	},
 }
 
 func Execute() {
@@ -25,7 +33,7 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.PersistentFlags().StringVarP(&internal.ConfigFile, "config", "C", "/etc/stx/installer.yaml", "configuration file")
 }
 
 
