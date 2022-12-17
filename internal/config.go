@@ -1,7 +1,7 @@
 package internal
 
 import (
-   "fmt"
+   log "github.com/sirupsen/logrus"
    "github.com/spf13/viper"
 )
 
@@ -17,8 +17,10 @@ var (
 func ReadConfig() {
 	if ConfigFile != "" {
 		viper.SetConfigFile(ConfigFile)
-		viper.ReadInConfig()
-		fmt.Printf("Using config file: %s\n", ConfigFile)
+		if err := viper.ReadInConfig(); err != nil {
+			panic("Uable to read configuration file")
+		}
+		log.Debugf("Using config file: %s\n", ConfigFile)
 	}
 }
 

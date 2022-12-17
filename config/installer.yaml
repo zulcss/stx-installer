@@ -1,2 +1,4 @@
-image:
-  url: http://127.0.0.1
+stx:
+  version: current
+  image:
+    url: http://127.0.0.1

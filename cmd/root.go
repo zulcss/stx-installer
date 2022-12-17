@@ -1,13 +1,15 @@
 package cmd
 
 import (
-	"fmt"
+	//"fmt"
 	"os"
 
 	"github.com/zulcss/stx-installer/internal"
+	"github.com/zulcss/stx-installer/pkg/installer"
 
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
+	//"github.com/spf13/viper"
+	log "github.com/sirupsen/logrus"
 )
 
 
@@ -19,9 +21,7 @@ var rootCmd = &cobra.Command{
 	// TODO: write something here
 	Long: "",
 	Run: func(cmd *cobra.Command, args []string) { 
-		internal.ReadConfig()
-
-		fmt.Printf("%s\n", viper.GetString("image.url"))
+		installer.Install()
 	},
 }
 
@@ -34,6 +34,8 @@ func Execute() {
 
 func init() {
 	rootCmd.PersistentFlags().StringVarP(&internal.ConfigFile, "config", "C", "/etc/stx/installer.yaml", "configuration file")
+
+	log.SetLevel(log.InfoLevel)
 }
 
 
