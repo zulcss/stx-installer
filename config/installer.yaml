@@ -2,3 +2,10 @@ stx:
   version: current
   image:
     server: 192.168.0.16
+  instance:
+    disk:
+      label: test
+      type: virt
+      device: disk.img
+      size: 20G
+      boot: uefi

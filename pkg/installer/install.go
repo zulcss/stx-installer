@@ -2,6 +2,7 @@ package installer
 
 import (
 	"github.com/zulcss/stx-installer/internal"
+	"github.com/zulcss/stx-installer/pkg/disk"
 	"github.com/zulcss/stx-installer/pkg/images"
 
 	log "github.com/sirupsen/logrus"
@@ -17,4 +18,7 @@ func Install() {
 	// Fetch the image from the download server
 	images.FetchImage()
 
+	// Create the disk needed to provision the
+	// StarlingX instance
+	disk.CreateDisk()
 }
