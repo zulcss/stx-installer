@@ -4,7 +4,7 @@ stx:
     server: 192.168.0.16
   instance:
     disk:
-      label: test
+      label: gpt
       type: virt
       device: disk.img
       size: 20G

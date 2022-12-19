@@ -11,4 +11,4 @@ func SH(c string) (string, error) {
 	cmd.Env = os.Environ()
 	o, err := cmd.CombinedOutput()
 	return string(o), err
-)
+}

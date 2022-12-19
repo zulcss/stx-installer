@@ -2,9 +2,9 @@ package disk
 
 import (
 	"fmt"
-
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	"github.com/zulcss/stx-installer/pkg/utils"
 	//"github.com/zulcss/stx-installer/pkg/constants"
 )
 
@@ -23,5 +23,12 @@ func CreateDisk() {
 	default:
 		log.Error("Unable to determine disk type")
 
+	}
+}
+
+func CreatePartition(disk string) {
+	out, err := utils.SH(fmt.Sprintf("parted %s gpt", disk))
+	if err != nil {
+		log.Error("Parted failed %s - %s", err, out)
 	}
 }
